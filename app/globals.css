@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-primary: #D4AF37;
+  --color-primary-dark: #B3922C;
+  --color-ink: #ECE7DA;
+  --color-paper: #0F1216;
+  --color-base: #07080A;
+  --color-lime: #14B876;
+  --color-coral: #E5484D;
+  --color-sun: #F2B705;
+}
+
+body {
+  background-color: var(--color-base);
+  color: var(--color-ink);
+  font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Syne', sans-serif;
+  color: var(--color-ink);
+}
+
+/* Size-specific tracking — negative on large display text, ~0 on body (WWDC 2020 typography) */
+.text-h1, h1 {
+  letter-spacing: -0.02em;
+}
+.text-h2, h2 {
+  letter-spacing: -0.01em;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-base);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink);
+  opacity: 0.3;
+  border-radius: 4px;
+  border: 2px solid var(--color-base);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Skip Navigation — WCAG 2.4.1 */
+.skip-nav-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 9999;
+  padding: 12px 24px;
+  background: var(--color-primary);
+  color: var(--color-base);
+  font-weight: 700;
+  font-size: 14px;
+  border: 1px solid var(--color-ink);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-nav-link:focus {
+  top: 0;
+}
+
+/* Focus visible indicators — WCAG 2.4.7 */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Respect reduced motion preferences — WCAG 2.3.3 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Frostier, more opaque glass surfaces when the user has reduced transparency on */
+@media (prefers-reduced-transparency: reduce) {
+  .glass-surface {
+    background-color: var(--color-paper) !important;
+    backdrop-filter: none !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .glass-surface {
+    background-color: var(--color-paper) !important;
+    backdrop-filter: none !important;
+    border-width: 2px !important;
+  }
+}
+
+/* Blog / legal prose styles — hand-rolled (no @tailwindcss/typography plugin installed) */
+.prose {
+  color: rgba(236, 231, 218, 0.75);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+.prose h1 {
+  color: var(--color-ink);
+  font-size: clamp(1.75rem, 2.4vw + 1rem, 2.5rem);
+  line-height: 1.15;
+  margin: 0 0 1.25rem;
+}
+.prose h2 {
+  color: var(--color-ink);
+  font-size: clamp(1.375rem, 1.4vw + 1rem, 1.75rem);
+  line-height: 1.25;
+  margin: 2.25rem 0 1rem;
+}
+.prose h3 {
+  color: var(--color-ink);
+  font-size: 1.25rem;
+  line-height: 1.35;
+  margin: 1.75rem 0 0.75rem;
+}
+.prose h4 {
+  color: var(--color-ink);
+  font-size: 1.0625rem;
+  margin: 1.5rem 0 0.5rem;
+}
+.prose p {
+  margin: 0 0 1.25rem;
+}
+.prose ul, .prose ol {
+  margin: 0 0 1.25rem;
+  padding-left: 1.5rem;
+}
+.prose ul {
+  list-style: disc;
+}
+.prose ol {
+  list-style: decimal;
+}
+.prose li {
+  margin: 0.4rem 0;
+}
+.prose a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.prose strong {
+  color: var(--color-ink);
+}
+.prose hr {
+  border: none;
+  border-top: 1px solid rgba(236, 231, 218, 0.12);
+  margin: 2rem 0;
+}
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.prose table th,
+.prose table td {
+  border: 1px solid rgba(236, 231, 218, 0.12);
+  padding: 8px 12px;
+  text-align: left;
+}
+.prose table th {
+  background: rgba(242, 183, 5, 0.12);
+  color: var(--color-ink);
+  font-weight: 700;
+}
+.prose blockquote {
+  border-left: 3px solid var(--color-primary);
+  padding-left: 16px;
+  color: rgba(236, 231, 218, 0.65);
+  font-style: italic;
+}
+
+/* ---- Elevation mechanics ---- */
+/* Soft, floating lift — cards rise a couple px into a deeper shadow on hover, and
+   settle back down on press. Replaces the old hard-offset brutalist "collapse". */
+.brutal-press {
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.brutal-press:hover {
+  transform: translateY(-2px);
+}
+.brutal-press:active {
+  transform: translateY(0) scale(0.98);
+}
+@media (prefers-reduced-motion: reduce) {
+  .brutal-press:hover,
+  .brutal-press:active {
+    transform: none;
+  }
+}
+
+/* Apple-style instant press feedback for non-brutalist elements (pills, icons) */
+.press-feedback {
+  transition: transform 100ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.press-feedback:active {
+  transform: scale(0.97);
+}
+
+/* SEBI Disclaimer — kept at least as prominent as the rest of the interface */
+.sebi-disclaimer {
+  font-size: 13px;
+  color: rgba(236, 231, 218, 0.78);
+  line-height: 1.7;
+}
+.sebi-disclaimer strong {
+  color: var(--color-ink);
+}

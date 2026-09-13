@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Page 1: Home -->
+  <url>
+    <loc>https://thechartians.com/</loc>
+    <priority>1.00</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- Page 2: Legal & Policies (Disclaimer, Terms, Privacy, Refund) -->
+  <url>
+    <loc>https://thechartians.com/#/legal</loc>
+    <priority>0.80</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Page 3: Compliance (Grievance, Complaint Board, Investor Charter) -->
+  <url>
+    <loc>https://thechartians.com/#/compliance</loc>
+    <priority>0.80</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+</urlset>

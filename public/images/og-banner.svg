@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0000EE"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#grad)" opacity="0.15"/>
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0000EE;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Logo area -->
+  <circle cx="140" cy="180" r="60" fill="white" opacity="0.15"/>
+  <text x="140" y="195" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="900" fill="white" text-anchor="middle">TC</text>
+  <!-- Brand Name -->
+  <text x="80" y="280" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="800" fill="white">The Chartians</text>
+  <!-- Tagline -->
+  <text x="80" y="355" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="400" fill="white" opacity="0.9">Catch Moves, Before They Happen</text>
+  <!-- SEBI Badge -->
+  <rect x="80" y="400" width="520" height="60" rx="30" fill="white" opacity="0.15"/>
+  <text x="340" y="439" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="white" text-anchor="middle">SEBI Registered Research Analyst · INH000024231</text>
+  <!-- Services -->
+  <text x="80" y="540" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="400" fill="white" opacity="0.8">Swing Trading · F&amp;O Research · Price Action Education</text>
+  <!-- Website -->
+  <text x="1120" y="590" font-family="Inter, Arial, sans-serif" font-size="22" fill="white" opacity="0.7" text-anchor="end">thechartians.com</text>
+</svg>

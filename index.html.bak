@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0T6G2L9X3K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0T6G2L9X3K');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Optimized Title for High CTR & SEO -->
+    <title>The Chartians | Best SEBI Registered Research Analyst (INH000024231) | Swing & FNO Trading</title>
+    
+    <!-- Meta Description for Search & AI Context -->
+    <meta name="description" content="The Chartians (SEBI RA: INH000024231) offers India's best logic-based Swing Trading setups, Nifty/BankNifty FNO research, and Price Action courses. Transparent, scientific, and risk-managed trading." />
+    
+    <!-- Comprehensive Keywords for AI Indexing -->
+    <meta name="keywords" content="SEBI Registered Research Analyst, The Chartians, INH000024231, Best Stock Market Tips Provider, Swing Trading India, BankNifty Option Buying, Nifty Prediction, FNO Trading Telegram, Technical Analysis Course, Share Market Advisory Surat, Price Action Trading, Stock Market Classes, Options Trading Strategies, The Chartians Reviews" />
+
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="The Chartians - SEBI Registered Research Analyst (INH000024231)" />
+    <meta property="og:description" content="Catch Moves Before They Happen. Join India's trusted community for scientific Swing & FNO trading setups." />
+    <meta property="og:image" content="https://i.postimg.cc/851FKPHZ/chartians-logo-(2).png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://thechartians.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <!-- Site Icon / Favicon -->
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/851FKPHZ/chartians-logo-(2).png" />
+    <link rel="apple-touch-icon" href="https://i.postimg.cc/851FKPHZ/chartians-logo-(2).png" />
+
+    <!-- Structured Data (JSON-LD) for Google & AI Bots -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "The Chartians",
+      "alternateName": "The Chartians Research Analyst",
+      "image": "https://i.postimg.cc/851FKPHZ/chartians-logo-(2).png",
+      "url": "https://thechartians.com/",
+      "telephone": "+919274387982",
+      "description": "SEBI Registered Research Analyst firm (INH000024231) specializing in Swing Trading, FNO Analysis, and Technical Analysis Education.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "509, Laxmi Enclave-2, Opp Gajera School, Katargaam",
+        "addressLocality": "Surat",
+        "addressRegion": "Gujarat",
+        "postalCode": "395004",
+        "addressCountry": "IN"
+      },
+      "priceRange": "₹3240 - ₹5400",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "16:00"
+      },
+      "sameAs": [
+        "https://t.me/chartians",
+        "https://x.com/chartians",
+        "https://www.instagram.com/the.chartians/"
+      ]
+    }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              background: '#FFFFFF',
+              primary: '#0000EE', 
+              accent: '#0000EE',
+              text: '#171717',
+              'surface-light': '#F8F9FA',
+              'surface-dark': '#E9ECEF',
+              'telegram': '#229ED9',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Inter', 'sans-serif'],
+            },
+            borderRadius: {
+              DEFAULT: '8px',
+              'lg': '16px',
+            },
+            fontSize: {
+              'h1': ['64px', { lineHeight: '1.1' }],
+              'h2': ['48px', { lineHeight: '1.2' }],
+              'body': ['20px', { lineHeight: '1.6' }],
+              'body-lg': ['24px', { lineHeight: '1.5' }],
+            },
+            animation: {
+              'bounce-slow': 'bounce 3s infinite',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #FFFFFF;
+        color: #171717;
+        font-family: 'Inter', sans-serif;
+      }
+      h1, h2, h3, h4, h5, h6, a {
+        color: #0000EE;
+      }
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #FFFFFF;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #0000EE;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #0000CC;
+      }
+      /* Skip Navigation — WCAG 2.4.1 */
+      .skip-nav-link {
+        position: absolute;
+        top: -100%;
+        left: 16px;
+        z-index: 9999;
+        padding: 12px 24px;
+        background: #0000EE;
+        color: #FFFFFF;
+        font-weight: 700;
+        font-size: 14px;
+        border-radius: 0 0 8px 8px;
+        text-decoration: none;
+        transition: top 0.2s;
+      }
+      .skip-nav-link:focus {
+        top: 0;
+        outline: 3px solid #FFFFFF;
+        outline-offset: -3px;
+      }
+      /* Focus visible indicators — WCAG 2.4.7 */
+      *:focus-visible {
+        outline: 2px solid #0000EE;
+        outline-offset: 2px;
+      }
+      /* Respect reduced motion preferences — WCAG 2.3.3 */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.3.1",
+    "react/": "https://esm.sh/react@18.3.1/",
+    "react-dom": "https://esm.sh/react-dom@18.3.1",
+    "react-dom/": "https://esm.sh/react-dom@18.3.1/",
+    "react-router-dom": "https://esm.sh/react-router-dom@6.22.3?deps=react@18.3.1,react-dom@18.3.1",
+    "lucide-react": "https://esm.sh/lucide-react@0.344.0?deps=react@18.3.1",
+    "framer-motion": "https://esm.sh/framer-motion@11.0.8?deps=react@18.3.1,react-dom@18.3.1",
+    "tailwind-merge": "https://esm.sh/tailwind-merge@^3.4.0",
+    "clsx": "https://esm.sh/clsx@^2.1.1"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

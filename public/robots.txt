@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Do not index regulatory/legal pages (no SEO value, saves crawl budget)
+Disallow: /legal
+Disallow: /compliance
+Disallow: /api/
+
+# Allow all CSS and JS for rendering
+Allow: /*.js$
+Allow: /*.css$
+
+Sitemap: https://thechartians.com/sitemap.xml

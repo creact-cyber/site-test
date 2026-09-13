@@ -1,0 +1,275 @@
+import React, { useState } from 'react';
+import { HashRouter, Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
+import StarBackground from './components/StarBackground';
+import Hero from './components/Hero';
+import Ticker from './components/Ticker';
+import BentoGrid from './components/BentoGrid';
+import Stats from './components/Stats';
+import HowItWorks from './components/HowItWorks';
+import Testimonials from './components/Testimonials';
+import Pricing from './components/Pricing';
+import Articles from './components/Articles';
+import Footer from './components/Footer';
+import FAQ from './components/FAQ';
+import Logo from './components/Logo';
+import Masterclass from './components/Masterclass';
+import FloatingChat from './components/FloatingChat';
+import HowToJoin from './components/HowToJoin';
+import EnquiryForm from './components/EnquiryForm';
+import ComplaintOverview from './components/ComplaintOverview';
+import TestimonialsV2 from './components/TestimonialsV2';
+import Socials from './components/Socials';
+import SkipNav from './components/SkipNav';
+import LegalPage from './components/LegalPage';
+import CompliancePage from './components/CompliancePage';
+import WebinarPage from './components/WebinarPage';
+
+// Track SPA page views in GA4 on every route change
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+    if ((window as any).gtag) {
+      (window as any).gtag('event', 'page_view', {
+        page_path: pathname,
+        page_title: document.title,
+      });
+    }
+  }, [pathname]);
+  return null;
+};
+
+// Main Layout Component
+const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isHomePage = pathname === '/';
+  const isWebinarPage = pathname === '/webinar';
+
+  // Close mobile menu on route change
+  React.useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
+  // Lock body scroll and support Escape key when menu is open
+  React.useEffect(() => {
+    if (!mobileMenuOpen) {
+      document.body.style.overflow = '';
+      return;
+    }
+    document.body.style.overflow = 'hidden';
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileMenuOpen(false);
+    };
+    document.addEventListener('keydown', handleKey);
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
+  const scrollToSection = (id: string) => {
+    setMobileMenuOpen(false);
+    if (!isHomePage) {
+      navigate('/');
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-white text-[#171717] selection:bg-primary/20 selection:text-primary overflow-x-hidden font-sans flex flex-col">
+      <SkipNav />
+      <StarBackground />
+
+      {/* Fixed Header Elements */}
+      <Ticker />
+
+      {/* Navigation Bar */}
+      <nav
+        className="fixed top-12 left-0 w-full z-50 px-2 py-3 md:px-4 md:py-4 transition-all"
+        aria-label="Main navigation"
+      >
+        {/* Nav Pill */}
+        <div className="max-w-7xl mx-auto bg-white/90 backdrop-blur-md border border-surface-dark rounded-full px-4 md:px-6 py-3 flex items-center justify-between shadow-sm">
+          <Link
+            to="/"
+            onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            className="flex items-center gap-2 md:gap-3 text-primary shrink-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-full"
+            aria-label="The Chartians — Go to homepage"
+          >
+            <Logo className="w-9 h-9 md:w-12 md:h-12 group-hover:scale-105 transition-transform" />
+            <span className="text-lg md:text-2xl font-bold tracking-tight truncate max-w-[140px] md:max-w-none">The Chartians</span>
+          </Link>
+
+          {/* Desktop Nav Links */}
+          <div className="hidden lg:flex items-center gap-8 text-base font-medium text-[#595959]">
+            <button onClick={() => scrollToSection('hero')} className="hover:text-primary transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg px-2 py-1">Home</button>
+            <button onClick={() => scrollToSection('plans')} className="hover:text-primary transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg px-2 py-1">Plans</button>
+            <button onClick={() => scrollToSection('features')} className="hover:text-primary transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg px-2 py-1">Why Us</button>
+            <button onClick={() => scrollToSection('insights')} className="hover:text-primary transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg px-2 py-1">Insights</button>
+            <Link to="/webinar" className={`transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg px-2 py-1 ${isWebinarPage ? 'text-primary' : 'hover:text-primary'}`}>Webinar</Link>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {/* Desktop CTA */}
+            {isWebinarPage ? (
+              <button
+                onClick={() => document.getElementById('course-cards')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                className="hidden lg:block bg-primary text-white px-5 py-2 md:px-7 md:py-3 rounded-full hover:bg-primary/90 transition-all text-sm md:text-base font-bold shadow-md shadow-primary/20 shrink-0 whitespace-nowrap transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              >
+                Choose A Course
+              </button>
+            ) : (
+              <Link
+                to="/webinar"
+                className="hidden lg:block bg-primary text-white px-5 py-2 md:px-7 md:py-3 rounded-full hover:bg-primary/90 transition-all text-sm md:text-base font-bold shadow-md shadow-primary/20 shrink-0 whitespace-nowrap transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              >
+                View Courses
+              </Link>
+            )}
+
+            {/* Mobile compact CTA */}
+            <a
+              href="https://t.me/chartians"
+              target="_blank"
+              rel="noreferrer"
+              className="lg:hidden bg-primary text-white px-3 py-2 rounded-full text-xs font-bold whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              Join Free
+            </a>
+
+            {/* Hamburger Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-[5px] rounded-full hover:bg-surface-light transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav-menu"
+            >
+              <span className={`block w-[22px] h-[2px] bg-[#171717] rounded-full transition-all duration-300 origin-center ${mobileMenuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
+              <span className={`block w-[22px] h-[2px] bg-[#171717] rounded-full transition-all duration-300 ${mobileMenuOpen ? 'opacity-0 scale-x-0' : ''}`} />
+              <span className={`block w-[22px] h-[2px] bg-[#171717] rounded-full transition-all duration-300 origin-center ${mobileMenuOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu Dropdown */}
+        <div
+          id="mobile-nav-menu"
+          className={`lg:hidden mt-2 mx-2 bg-white border border-surface-dark rounded-3xl shadow-2xl overflow-hidden transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'max-h-[480px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'}`}
+          aria-hidden={!mobileMenuOpen}
+        >
+          <div className="flex flex-col p-4 gap-1">
+            <button onClick={() => scrollToSection('hero')} className="text-left px-4 py-3.5 rounded-2xl text-base font-semibold text-[#171717] hover:bg-primary/5 hover:text-primary transition-colors">Home</button>
+            <button onClick={() => scrollToSection('plans')} className="text-left px-4 py-3.5 rounded-2xl text-base font-semibold text-[#171717] hover:bg-primary/5 hover:text-primary transition-colors">Plans &amp; Pricing</button>
+            <button onClick={() => scrollToSection('features')} className="text-left px-4 py-3.5 rounded-2xl text-base font-semibold text-[#171717] hover:bg-primary/5 hover:text-primary transition-colors">Why Chartians</button>
+            <button onClick={() => scrollToSection('insights')} className="text-left px-4 py-3.5 rounded-2xl text-base font-semibold text-[#171717] hover:bg-primary/5 hover:text-primary transition-colors">Market Insights</button>
+            <Link to="/webinar" onClick={() => setMobileMenuOpen(false)} className="px-4 py-3.5 rounded-2xl text-base font-semibold text-[#171717] hover:bg-primary/5 hover:text-primary transition-colors">Webinar &amp; Courses</Link>
+            <div className="h-px bg-surface-dark my-2" />
+            <a
+              href="https://t.me/chartians"
+              target="_blank"
+              rel="noreferrer"
+              className="block px-4 py-3.5 rounded-2xl text-sm font-bold bg-[#229ED9] text-white text-center hover:bg-[#229ED9]/90 transition-colors"
+            >
+              Join Free Telegram Channel
+            </a>
+            {isWebinarPage ? (
+              <button
+                onClick={() => { setMobileMenuOpen(false); document.getElementById('course-cards')?.scrollIntoView({ behavior: 'smooth' }); }}
+                className="px-4 py-3.5 rounded-2xl text-sm font-bold bg-primary text-white text-center hover:bg-primary/90 transition-colors"
+              >
+                Choose A Course
+              </button>
+            ) : (
+              <Link
+                to="/webinar"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-4 py-3.5 rounded-2xl text-sm font-bold bg-primary text-white text-center hover:bg-primary/90 transition-colors"
+              >
+                View All Courses
+              </Link>
+            )}
+          </div>
+        </div>
+      </nav>
+
+      <main id="main-content" className="flex-grow pt-24" role="main" tabIndex={-1}>
+        {children}
+      </main>
+
+      {/* Global Enquiry Form before Footer */}
+      <section aria-label="Enquiry Form">
+        <EnquiryForm />
+      </section>
+
+      {/* Complaint Overview only on Home Page */}
+      {isHomePage && (
+        <section aria-label="Complaint Overview">
+          <ComplaintOverview />
+        </section>
+      )}
+
+      <Footer />
+      <FloatingChat hideOnMobile={isWebinarPage} />
+    </div>
+  );
+};
+
+// Landing Page Component
+const Home: React.FC = () => {
+  return (
+    <>
+      <div id="hero">
+        <Hero />
+      </div>
+      <div id="features">
+        <BentoGrid />
+      </div>
+      <TestimonialsV2 />
+      <Pricing />
+      <HowToJoin />
+      <Masterclass />
+      <Socials />
+      <Stats />
+      <HowItWorks />
+      <div id="insights">
+        <Articles />
+      </div>
+      <Testimonials />
+      <FAQ />
+    </>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <HashRouter>
+      <ScrollToTop />
+      <Layout>
+        <Routes>
+          {/* Main pages */}
+          <Route path="/" element={<Home />} />
+          <Route path="/webinar" element={<WebinarPage />} />
+          <Route path="/legal" element={<LegalPage />} />
+          <Route path="/compliance" element={<CompliancePage />} />
+
+          {/* Redirects from old routes for SEO preservation */}
+          <Route path="/terms-conditions" element={<Navigate to="/legal#terms" replace />} />
+          <Route path="/disclaimer" element={<Navigate to="/legal#disclaimer" replace />} />
+          <Route path="/privacy-policy" element={<Navigate to="/legal#privacy" replace />} />
+          <Route path="/refund-policy" element={<Navigate to="/legal#refund" replace />} />
+          <Route path="/grievance-redressal-policy" element={<Navigate to="/compliance#grievance" replace />} />
+          <Route path="/complaint-board" element={<Navigate to="/compliance#complaints" replace />} />
+        </Routes>
+      </Layout>
+    </HashRouter>
+  );
+};
+
+export default App;
